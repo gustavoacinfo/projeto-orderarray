@@ -25,5 +25,4 @@ public class NumbersController {
 		return ResponseEntity.ok(number);
 		
 	}
-	
 }
