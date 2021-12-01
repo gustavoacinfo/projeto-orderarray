@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
 import com.crosscomerce.orderarray.models.Numbers;
 
 import reactor.core.publisher.Mono;
@@ -44,11 +45,12 @@ public class NumbersService {
 			.uri("/numbers?page={numpage}", numPage)
 			.retrieve()
 			.bodyToMono(Numbers.class);
-		
+			
 		Numbers numbers = monoNumbers.block();
+		
 		ArrayList<Double> allNumbers = new ArrayList<>(numbers.getNumbers());
 		
-		if (numbers.getNumbers().size() > 0 && numPage <= 2) {
+		if (numbers.getNumbers().size() > 0 ) {
 			allNumbers.addAll(this.getNumbers(++numPage));
 		}
 		
