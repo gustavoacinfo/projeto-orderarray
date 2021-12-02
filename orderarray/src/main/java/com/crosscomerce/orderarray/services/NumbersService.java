@@ -50,7 +50,7 @@ public class NumbersService {
 		
 		ArrayList<Double> allNumbers = new ArrayList<>(numbers.getNumbers());
 		
-		if (numbers.getNumbers().size() > 0 ) {
+		if (numbers.getNumbers().size() > 0 && numPage <= 2) {
 			allNumbers.addAll(this.getNumbers(++numPage));
 		}
 		
